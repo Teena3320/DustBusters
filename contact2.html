@@ -21,6 +21,7 @@
       background-color: rgba(244, 244, 244, 0.5);
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: relative;
     }
     label {
       font-weight: bold;
@@ -90,7 +91,15 @@
         padding: 10px;
 
     }
-   
+    /* Back Arrow Styles */
+    .back-arrow {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 24px;
+      color: #000000;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -103,7 +112,8 @@
   </div>
 
   <div class="container">
-    
+    <div class="back-arrow" onclick="goBack()">&#8592;</div> <!-- Back Arrow -->
+  </br>
     <div class="rating">
       <div id="contact-details">
         <h2>Contact Details</h2>
@@ -117,6 +127,10 @@
   <script>
     function logoClick() {
       window.location.href = "./index.html";
+    }
+
+    function goBack() {
+      window.history.back(); // Go back to the previous page
     }
   </script>
 </body>
