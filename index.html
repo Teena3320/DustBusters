@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('./background imag 16ce57f0-4d24-4268-950e-964a9188c14b.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: rgba(244, 244, 244, 0.5);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2077d4;
+    }
+    /* Navbar Styles */
+    .navbar {
+      background-color: #333;
+      overflow: hidden;
+    }
+    .navbar a {
+      float: right;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 20px;
+      padding-top: 50px;
+      padding-bottom: 25px;
+      text-decoration: none;
+      font-size: larger;
+    }
+    .navbar a:hover{
+      font-size: 20px;
+      color: rgb(230, 216, 24);
+      font-style: italic;
+    }
+    #logo1{
+        width: 150px;
+        border-radius: 50%;
+        padding: 10px;
+    }
+    .login-content {
+      text-align: center;
+      margin-top: 100px;
+      color: #ffffff;
+    }
+    .login-content h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .login-content p {
+      font-size: 20px;
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar" id="navigationText">
+    <img id="logo1" src="logo 1.jpg" onclick="logoClick()">
+    <a href="./contact.html">Contact Us</a>
+    <a href="./cleans.html">Clean room</a>
+    <a href="./home.html">Home</a>
+  </div>
+
+  <div class="container">
+    <div class="login-content">
+      <h1>Login</h1>
+      <p>Please select your role:</p>
+      <button onclick="studentLogin()">Student</button>
+      <button onclick="employeeLogin()">Employee</button>
+    </div>
+  </div>
+
+  <script>
+    function logoClick() {
+      window.location.href = "./home.html";
+    }
+
+    function studentLogin() {
+      window.location.href = "./student-login.html";
+    }
+
+    function employeeLogin() {
+      window.location.href = "./employee-login.html";
+    }
+  </script>
+</body>
+</html>
