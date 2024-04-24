@@ -18,7 +18,7 @@
     .login-content {
       text-align: center;
       margin-top: 100px;
-      color: #fff;
+      color: #333;
     }
     .login-content h1 {
       font-size: 36px;
@@ -28,7 +28,7 @@
       font-size: 20px;
       margin-bottom: 40px;
     }
-  </style> 
+  </style>
 </head>
 <body>
   <div class="navbar" id="navigationText">
@@ -41,12 +41,13 @@
   <div class="container">
     <div class="login-content"> 
       <h1>Login</h1>
-      <p>Please select your role:</p>
+      <h4>Please select your role:</h4>
       <button onclick="studentLogin()">Student</button>
       <button onclick="employeeLogin()">Employee</button>
+    </br>
     </div>
   </div>
-
+ 
   <script>
     function logoClick() {
       window.location.href = "./index.html";
