@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Login</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+
+
+@keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        
+        #mainContent  {
+            position: relative;
+            top: 80px;
+            animation: slideIn 1s ease;
+        }
+
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+
+   
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    .login-content {
+      text-align: center;
+      margin-top: 100px;
+      color: #333;
+    }
+    .login-content h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .login-content p {
+      font-size: 20px;
+      margin-bottom: 40px;
+    }
+    
+    .login-button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .login-button:hover {
+      background-color: #2077d4;
+    }
+  </style>
+</head> 
+<body>
+  <div class="navbar" id="navigationText">
+    <img id="logo1" src="logo 1.jpg" onclick="logoClick()">
+    
+    <a href="./contact2.html">Contact Us</a>
+    <a href="./index.html">Clean room</a>
+    <a href="./index.html">Home</a>
+  </div>
+
+  <div class="container" id="mainContent">
+    <div class="back-arrow" onclick="goBack()">&#8592;</div> <!-- Back Arrow -->
+    <div class="login-content">
+      <h1>Employee Login</h1>
+    </br>
+  </br> 
+
+        <a href="./todo_list.html" class="login-button">See Todo List</a>
+        <a href="./completed_tasks.html" class="login-button">Completed</a>
+
+      </br>
+    </br>
+    </div>
+  </div>
+
+  <script>
+    function logoClick() {
+      window.location.href = "./index.html";
+    }
+
+    function goBack() {
+      window.location.href="./index.html"; // Go back to the previous page
+    }
+  </script>
+</body>
+</html>

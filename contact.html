@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clean room</title>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <style>
+    
+    @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        
+        #mainContent {
+            position: relative;
+            top: 80px;
+            animation: slideIn 1s ease;
+        }
+
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+
+  
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .time-slots {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .time-slot {
+      flex: 0 0 30%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      background-color: #007bff;
+    }
+    .time-slot:hover {
+      background-color: #f0f0f0;
+    }
+   
+  </style>
+</head>
+<body>
+  <div class="navbar" id="navigationText">
+    <img id="logo1" src="logo 1.jpg" onclick="logoClick()" >
+    <a href="./index.html">Log Out</a>
+    <a href="./contact.html">Contact Us</a>
+    <a href="./cleans.html">Clean room</a>
+    
+    <a href="./home.html" class="active">Home</a>
+  </div>
+
+  <div class="container">
+    <div class="back-arrow" onclick="goBack()">&#8592;</div> <!-- Back Arrow -->
+  </br>
+    <div class="rating">
+      <div id="contact-details">
+        <h2>Contact Details</h2>
+        <h4> UI UX Designer: </h4>
+        <p style="text-indent: 80px;"> Teena Sebastian 22BCE3320</p>
+        <p style="text-indent: 80px;">Email: ***********@vitstudent.ac.in</p>
+        <p style="text-indent: 80px;">Phone: *********</p>
+      </div><div id="contact-details">
+        <h4> ********** </h4>
+        <p style="text-indent: 80px;"> Shubh Kumar 22BCE0688</p>
+        <p style="text-indent: 80px;">Email: ***********@vitstudent.ac.in</p>
+        <p style="text-indent: 80px;">Phone: **********</p>
+      </div><div id="contact-details">
+        <h4> ********** </h4>
+        <p style="text-indent: 80px;"> Saanvi S Patil 22BCI0211</p>
+        <p style="text-indent: 80px;">Email: ***************@vitstudent.ac.in</p>
+        <p style="text-indent: 80px;">Phone: *********</p>
+      </div><div id="contact-details">
+        <h4>*********** </h4>
+        <p style="text-indent: 80px;"> Nihal AnilKumar 22BCE2069</p>
+        <p style="text-indent: 80px;">Email: *********2022@vitstudent.ac.in</p>
+        <p style="text-indent: 80px;">Phone: ***********</p>
+      </div>
+      
+  </div>
+  <script>
+    function logoClick() {
+      window.location.href = "./home.html";
+    }
+
+    function goBack() {
+      window.location.href="./home.html"; // Go back to the previous page
+    }
+  </script>
+</body>
+</html>
+ 

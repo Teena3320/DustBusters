@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>History</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <style>
+    
+    @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+ 
+        
+        #mainContent {
+            position: relative;
+            top: 80px;
+            animation: slideIn 1s ease;
+        }
+
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+  
+    .history-content {
+      text-align: center;
+      margin-top: 100px;
+      color: #333;
+    }
+    .history-content h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .history-entry {
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+    }
+    .history-entry p {
+      margin: 5px 0;
+    }
+    .history-entry a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    .history-entry a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar" id="navigationText">
+    <img id="logo1" src="logo 1.jpg" onclick="logoClick()">
+    <a href="./index.html">Log Out</a>
+    <a href="./contact.html">Contact Us</a>
+    <a href="./cleans.html">Clean room</a>
+    <a href="./home.html">Home</a>
+  </div>
+
+  <div class="container" id="mainContent">
+    <div class="history-content">
+      <div class="back-arrow" onclick="goBack()">&#8592;</div> <!-- Back Arrow -->
+      <h1>History</h1>
+      
+      <div class="history-entry">
+        <p>Date/Time: January 2, 2024 11:30 AM</p>
+        <p>Employee Name: John Doe</p>
+        <p>Status: To Complete <a href="./feedback.html" >(Feedback)</a></p>
+      </div>
+      <div class="history-entry">
+        <p>Date/Time: January 1, 2024 10:00 AM</p>
+        <p>Employee Name: Jane Smith</p>
+        <p>Status: Completed</p>
+      </div>
+    </div>
+    
+    
+  </div>
+
+  <script>
+    function logoClick() {
+      window.location.href = "./home.html";
+    }
+    
+    function goBack() {
+      window.location.href="./home.html"; 
+    }
+  </script>
+</body>
+</html>

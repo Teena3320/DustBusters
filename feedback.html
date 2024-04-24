@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <style>
+    
+    @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        
+        #mainContent {
+            position: relative;
+            top: 80px;
+            animation: slideIn 1s ease;
+        }
+
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+  
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .rating {
+    margin-bottom: 20px;
+  }
+  .stars {
+    display: flex;
+    justify-content: center;
+  }
+  .star {
+    font-size: 25px;
+    cursor: pointer;
+    color: #656161;
+    margin: 0 5px;
+  }
+  .star.checked {
+    color: orange;
+  }
+  
+  </style>
+</head>
+<body>
+  <div class="navbar" id="navigationText">
+    <img id="logo1" src="logo 1.jpg" onclick="logoClick()">
+    <a href="./index.html">Log Out</a>
+    <a href="./contact.html">Contact Us</a>
+    <a href="./cleans.html">Clean room</a>
+    <a href="./home.html" class="active">Home</a>
+  </div>
+
+  <div class="container" id="mainContent">
+    <div class="back-arrow" onclick="goBack()">&#8592;</div> <!-- Back Arrow -->
+  </br></br></br></br></br></br>
+    <center><h1>Feedback</h1></center>
+    <label for="otp">OTP:</label>
+    <input type="text" id="otp" name="otp" readonly>
+    <button onclick="generateOTP()">Generate OTP</button>
+  </br></br>
+    <div class="rating">
+      <label for="rating">Rating:</label>
+      <div class="stars">
+        <span class="star" onclick="setRating(1)">&#9733;</span>
+        <span class="star" onclick="setRating(2)">&#9733;</span>
+        <span class="star" onclick="setRating(3)">&#9733;</span>
+        <span class="star" onclick="setRating(4)">&#9733;</span>
+        <span class="star" onclick="setRating(5)">&#9733;</span>
+      </div>
+    </div>
+
+    <label for="review">Review:</label>
+    <textarea id="review" name="review" rows="4"></textarea>
+    <br>
+    <button class="btn" id="submitbtn" onclick="gofront()">Submit</button>
+  </div>
+
+  
+  <script type="module">
+	// Import the functions you need from the SDKs you need
+	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+	import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+	// TODO: Add SDKs for Firebase products that you want to use
+	// https://firebase.google.com/docs/web/setup#available-libraries
+
+	// Your web app's Firebase configuration
+	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	const firebaseConfig = {
+		apiKey: "AIzaSyBOHnVGl1AY-4RjkM-fr4CkrS33m6HkDxU",
+        authDomain: "wrud2-f0ad2.firebaseapp.com",
+        projectId: "wrud2-f0ad2",
+        storageBucket: "wrud2-f0ad2.appspot.com",
+        messagingSenderId: "277525864072",
+        appId: "1:277525864072:web:3f7ff5ce5768a335dac93d",
+        measurementId: "G-1XTX76MBEB"
+	};
+
+
+	// Initialize Firebase
+
+	const app = initializeApp(firebaseConfig);
+	import { getFirestore, doc, setDoc, addDoc, updateDoc, deleteDoc, getDoc, collection } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+
+	const db = getFirestore();
+	
+	//let Star = document.getElementById("");
+	let Otp = document.getElementById("otp");
+    let Review=document.getElementById("review");
+	let Submitbtn = document.getElementById("submitbtn");
+	
+	async function submitFeedback() {
+		var ref = doc(db, "Review", document.getElementById("otp").value);
+		await setDoc(
+			ref, {
+			OTP: document.getElementById("otp").value,
+			Review: document.getElementById("review").value,
+			//Star Rating: document.getElementById("SecBox").value,
+		}
+		)
+
+			.then(() => {
+
+				alert("data added successfully");
+
+			}
+			)
+			.catch((error) => {
+				alert("unsuccessfull,error:" + error);
+			});
+
+	}
+	
+	
+	
+	Submitbtn.addEventListener("click", submitFeedback);
+	
+
+
+</script>
+<script>
+    let currentRating = 0;
+
+    function generateOTP() {
+      const digits = 5;
+      const otp = Math.floor(Math.random() * Math.pow(10, digits));
+      document.getElementById('otp').value = otp;
+    }
+
+    function setRating(rating) {
+      currentRating = rating;
+      const stars = document.querySelectorAll('.star');
+      stars.forEach((star, index) => {
+        if (index < rating) {
+          star.classList.add('checked');
+        } else {
+          star.classList.remove('checked');
+        }
+      });
+    }
+
+    
+    function logoClick(){
+        window.location.href="Login1.html"
+    }
+    function goBack(){
+      window.location.href="./history.html"
+    }
+    function goFront() {
+      window.location.href="./home.html"; 
+    }
+  </script>
+</body>
+</html>

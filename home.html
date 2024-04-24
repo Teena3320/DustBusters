@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <style>
+    
+    @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        
+        #mainContent {
+            position: relative;
+            top: 80px;
+            animation: slideIn 1s ease;
+        }
+
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+   
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    .home-content {
+      text-align: center;
+      margin-top: 100px;
+      color: #333;
+    }
+    .home-content h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .home-content p {
+      font-size: 20px;
+      margin-bottom: 40px;
+    }
+
+    .login-button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .login-button:hover {
+      background-color: #2077d4;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar" id="navigationText">
+    <img id="logo1" src="logo 1.jpg" onclick="logoClick()">
+    <a href="./index.html">Log Out</a>
+    <a href="./contact.html">Contact Us</a>
+    <a href="./cleans.html">Clean room</a>
+    <a href="./home.html" class="active">Home</a>
+
+  </div>
+ 
+  <div class="container" id="mainContent">
+    <div class="home-content" >
+      <h1>Welcome, Roberto Dessouzza</h1>
+      <h4>Here you can schedule room cleaning and view your previous history.</h4>
+    </br>
+      <a href="./history.html" class="login-button">History</a> <a href="./cleans.html" class="login-button">Schedule Room Cleaning</a>
+    </div>
+  </div>
+
+  <script>
+    function logoClick() {
+      window.location.href = "./home.html";
+    }
+  </script>
+</body>
+</html>

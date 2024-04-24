@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clean room</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <style>
+    
+    @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        
+        #mainContent {
+            position: relative;
+            top: 80px;
+            animation: slideIn 1s ease;
+        }
+
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+  
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .time-slots {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .time-slot {
+      flex: 0 0 30%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      background-color: #007bff;
+    }
+    .time-slot:hover {
+      background-color: #f0f0f0;
+    }
+  
+   
+  </style>
+</head>
+<body>
+  <div class="navbar" id="navigationText">
+    <img id="logo1" src="./logo 1.jpg" onclick="logoClick()" >
+    <a href="./index.html">Log Out</a>
+    <a href="./contact.html">Contact Us</a>
+    <a href="./cleans.html">Clean room</a>    
+    <a href="./home.html" class="active">Home</a>
+  </div>
+
+  <div class="container" id="mainContent">
+    <div class="back-arrow" onclick="goBack()">&#8592;</div> <!-- Back Arrow -->
+  </br></br></br>
+    <center><h1>Schedule room cleaning</h1></center>
+    <label for="otp">Room number:</label> <br>
+    <input type="text" id="roomnumber">
+
+    <label for="registrationNumber">Preferable date/time slot:</label> <br>
+   
+    <input type="datetime-local" id="timee" name="time">
+        
+    <span style="padding: 10px;"><button style="height: 30px; padding: 10px; padding-top: 0%; padding-bottom: 0%; " onclick="displaySelectedTime()"> Select</button></span>
+    <br>
+    <br>
+    <label for="review">Any Specific instructions:</label>
+    <textarea id="review" name="review" rows="4"></textarea>
+    <br>
+    <button id="submitbtn" class="btn" onclick="goFront()" >Submit</button>
+
+    <!-- Back button to go to home page -->
+    
+  </div>
+  <script type="module">
+	// Import the functions you need from the SDKs you need
+	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+	import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+	// TODO: Add SDKs for Firebase products that you want to use
+	// https://firebase.google.com/docs/web/setup#available-libraries
+ 
+	// Your web app's Firebase configuration
+	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	const firebaseConfig = {
+		apiKey: "AIzaSyBOHnVGl1AY-4RjkM-fr4CkrS33m6HkDxU",
+        authDomain: "wrud2-f0ad2.firebaseapp.com",
+        projectId: "wrud2-f0ad2",
+        storageBucket: "wrud2-f0ad2.appspot.com",
+        messagingSenderId: "277525864072",
+        appId: "1:277525864072:web:3f7ff5ce5768a335dac93d",
+        measurementId: "G-1XTX76MBEB"
+	};
+
+
+	// Initialize Firebase
+
+	const app = initializeApp(firebaseConfig);
+	import { getFirestore, doc, setDoc, addDoc, updateDoc, deleteDoc, getDoc, collection } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+
+	const db = getFirestore();
+	
+	//let Star = document.getElementById("");
+	let RoomNumber = document.getElementById("roomnumber");
+    let DateTime=document.querySelector('input[type="datetime-local"]');
+	let Submitbtn = document.getElementById("submitbtn");
+    let Instructions=document.getElementById("review")
+	
+	async function submitDetails() {
+        var currentTime = new Date();
+
+        // Extract the current hour, minute, and second
+        var currentHour = currentTime.getHours();
+        var currentMinute = currentTime.getMinutes();
+        var currentSecond = currentTime.getSeconds();
+
+        // Format the time as a string (e.g., "HH:MM:SS")
+        var formattedTime = currentHour + ":" + currentMinute + ":" + currentSecond;
+		var ref = doc(db, "ScheduleRoomCleaning", formattedTime);
+		await setDoc(
+			ref, {
+			RoomNumber: document.getElementById("roomnumber").value,
+			DateTime: document.querySelector('input[type="datetime-local"]').value,
+            Instructions:document.getElementById("review").value
+
+		}
+		)
+
+			.then(() => {
+
+				alert("data added successfully");
+
+			}
+			)
+			.catch((error) => {
+				alert("unsuccessfull,error:" + error);
+			});
+
+	}
+	
+	
+	
+	Submitbtn.addEventListener("click", submitDetails);
+	
+
+
+</script>
+  <script>
+    function logoClick(){
+        window.location.href="./home.html"
+    }
+
+    function selectTime(element) {
+      // Remove 'selected' class from all time slots
+      var timeSlots = document.querySelectorAll('.time-slot');
+      timeSlots.forEach(function(slot) {
+        slot.classList.remove('selected');
+      });
+
+      // Add 'selected' class to the clicked time slot
+      element.classList.add('selected');
+    }
+
+    
+    function displaySelectedTime() {
+      console.log("Displaying selected time...");
+      var selectedDateTime = document.getElementById('timee').value;
+      alert("Your Selected Time is: " + selectedDateTime);
+    }
+
+    function goBack() {
+      window.location.href="./home.html"; 
+    }
+
+    function goFront() {
+      window.location.href="./success.html"; 
+    }
+  </script>
+</body>
+</html>

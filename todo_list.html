@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todolist</title>
+    <style>
+        body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('./background imag 16ce57f0-4d24-4268-950e-964a9188c14b.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: rgba(244, 244, 244, 0.5);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      font-weight: bold;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2077d4;
+    }
+    /* Navbar Styles */
+    .navbar {
+      background-color: #333;
+      overflow: hidden;
+    }
+    .navbar a {
+      float: right;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 20px;
+      padding-top: 50px;
+      padding-bottom: 25px;
+      text-decoration: none;
+      font-size: larger;
+    }
+    .navbar a:hover{
+      font-size: 20px;
+      color: rgb(230, 216, 24);
+      font-style: italic;
+    }
+    #logo1{
+        width: 150px;
+        border-radius: 50%;
+        padding: 10px;
+
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        
+        #mainContent {
+            position: relative;
+            top: 80px;
+            animation: slideIn 1s ease;
+        }
+
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+
+
+
+        #titleDesc {
+            width: 50%;
+            margin: 0 auto;
+            background-color: rgba(233, 228, 228, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        table tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .checkbox-column {
+            text-align: center;
+        }
+
+        .finished-checkbox {
+            transform: scale(1.5);
+        }
+        
+    </style>
+</head>
+<body>
+  <div class="navbar" id="navigationText">
+    <img id="logo1" src="./logo 1.jpg" onclick="logoClick()" >
+    <a href="./index.html">Log Out</a>
+    <a href="./contact.html">Contact Us</a>
+    <a href="./cleans.html">Clean room</a>
+    
+    <a href="./home.html" class="active">Home</a>
+  </div>
+
+
+    <div id="mainContent">
+        <div id="titleDesc">
+          <div class="back-arrow" onclick="goBack()">&#8592;</div> <!-- Back Arrow -->
+        </br></br></br></br>
+            <form>
+                <center><label for="title">Title:</label></center>
+                <input type="text" id="title" name="title" placeholder="Enter title">
+                <center><label for="description">Description:</label></center>
+                <textarea id="description" name="description" rows="4" placeholder="Enter description"></textarea>
+                <button type="button" id="add">Add to list</button>
+            </form>
+        </div>
+        <div class="items" id="my-4">
+          
+            <table>
+                <thead>
+                    <tr>
+                        <th class="checkbox-column">Finished</th>
+                        <th>Item Title</th>
+                        <th>Item Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tablebody">
+                    <tr></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        document.getElementById("add").addEventListener("click", function() {
+            const title = document.getElementById('title').value
+            const description = document.getElementById('description').value
+            const tableBody = document.getElementById('tablebody')
+            const newRow = document.createElement('tr')
+            newRow.innerHTML = 
+            `
+                <td class="checkbox-column"><input type="checkbox" class="finished-checkbox"></td>
+                <td>${title}</td>
+                <td>${description}</td>
+                <td><button onclick="deleteRow(this)">Delete</button></td>
+            `;
+            tableBody.appendChild(newRow);
+        });
+
+        function deleteRow(button) {
+            const row = button.parentNode.parentNode
+            row.parentNode.removeChild(row)
+        }
+        function goBack() {
+      window.location.href="./employee-login.html"; 
+    }
+    </script>
+</body>

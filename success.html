@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Success</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <style>
+    
+    @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        
+        #mainContent {
+            position: relative;
+            top: 80px;
+            animation: slideIn 1s ease;
+        }
+
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+  
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+   
+    .success-content {
+      text-align: center;
+      margin-top: 100px;
+      color: #333;
+    }
+    .success-content h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .success-content p {
+      font-size: 20px;
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar" id="navigationText">
+    <img id="logo1" src="logo 1.jpg" onclick="logoClick()">
+    <a href="./index.html">Log Out</a>
+    <a href="./contact.html">Contact Us</a>
+    <a href="./cleans.html">Clean room</a>
+    <a href="./home.html" class="active">Home</a>
+  </div>
+
+  <div class="container" id="mainContent">
+    <div class="success-content">
+      <h1>Success</h1>
+      <p>Your room cleaning has been scheduled successfully.</p>
+      <p>Here are the details:</p>
+      <p>Room Number: <span id="registrationNumber"></span></p>
+      <p>Time Slot: <span id="timeSlot"></span></p>
+      <button onclick="goToHomePage()">Back to Home</button>
+    </div>
+  </div>
+
+  <script>
+    function logoClick() {
+      window.location.href = "./home.html";
+    }
+
+    // Retrieve values from local storage
+    var registrationNumber = localStorage.getItem('registrationNumber');
+    var review = localStorage.getItem('review');
+    var selectedTimeSlot = localStorage.getItem('selectedTimeSlot');
+
+    // Display values in the success page
+    document.getElementById('registrationNumber').innerText = registrationNumber;
+    document.getElementById('review').innerText = review;
+    document.getElementById('timeSlot').innerText = selectedTimeSlot;
+
+    // Function to navigate to the home page
+    function goToHomePage() {
+      window.location.href = "./home.html";
+    }
+  </script>
+</body>
+</html>
